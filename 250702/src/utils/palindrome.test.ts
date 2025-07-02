@@ -1,3 +1,5 @@
+import { isPalindrome } from './palindrome';
+
 test('noon is a palindrome', () => {
-  expect(isPalindrome('noon').toBe(true));
+  expect(isPalindrome('noon')).toBe(true);
 });

@@ -19,3 +19,11 @@ test('-4 is even', () => {
 test('2.5 is not even', () => {
   expect(isEven(2.5)).toBe(false);
 });
+
+test('returns true for even numbers', () => {
+  expect(isEven(4)).toBe(true);
+});
+
+test('returns false for odd numbers', () => {
+  expect(isEven(3)).toBe(false);
+});

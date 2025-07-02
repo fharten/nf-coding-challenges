@@ -1,3 +1,3 @@
 export function isEven(n: number): boolean {
-  return true;
+  return n % 2 === 0;
 }

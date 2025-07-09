@@ -7,13 +7,87 @@
     <script src="./script.js"></script>
     <title>Color Randomizer</title>
   </head>
+
   <body>
-    <h1>Hello World!</h1>
-    <button onclick="handleColor()">Get color</button>
-    <div id="colorDiv" style="height: 200px">
-      <p id="hex"></p>
-      <p id="rgb"></p>
-      <p id="hsl"></p>
+    <h1 style="text-align: center">COLOR RANDOMIZER</h1>
+    <div
+      style="height: 200px; width: 90%; margin-left: auto; margin-right: auto"
+    >
+      <div
+        id="colorDiv"
+        style="
+          padding: 20px;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-items: center;
+          flex-direction: column;
+          border-radius: 5px;
+        "
+      >
+        <div id="wrapper" style="visibility: hidden">
+          <div style="display: flex; align-items: center">
+            <p id="hex" class="text"></p>
+            <button style="margin-left: 10px; height: 30px" onclick="copyHex()">
+              Copy HEX
+            </button>
+          </div>
+          <div style="display: flex; align-items: center">
+            <p id="rgb" class="text"></p>
+            <button style="margin-left: 10px; height: 30px" onclick="copyRgb()">
+              Copy RGB
+            </button>
+          </div>
+          <div style="display: flex; align-items: center">
+            <p id="hsl" class="text"></p>
+            <button style="margin-left: 10px; height: 30px" onclick="copyHsl()">
+              Copy HSL
+            </button>
+          </div>
+        </div>
+        <div style="display: flex">
+          <button
+            id="red"
+            style="background-color: red; color: white"
+            onclick="handleColor('red')"
+          >
+            redish
+          </button>
+          <button
+            id="blue"
+            style="
+              background-color: blue;
+              color: white;
+              margin-left: 10px;
+              margin-right: 10px;
+            "
+            onclick="handleColor('blue')"
+          >
+            blueish
+          </button>
+          <button id="random" onclick="handleColor()">RANDOM</button>
+          <button
+            id="green"
+            style="
+              background-color: green;
+              color: black;
+              margin-left: 10px;
+              margin-right: 10px;
+            "
+            onclick="handleColor('green')"
+          >
+            greenish
+          </button>
+          <button
+            id="yellow"
+            style="background-color: yellow; color: black"
+            onclick="handleColor('yellow')"
+          >
+            yellowish
+          </button>
+        </div>
+      </div>
     </div>
   </body>
 </html>

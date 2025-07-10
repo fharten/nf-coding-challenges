@@ -55,9 +55,7 @@ app.get("/post/:slug", (req: Request, res: Response) => {
   const slug = req.params.slug;
   const post = newBlogData.find((p) => p.slug === slug);
 
-  if (!post) {
-    return res.status(404).send("Post not found");
-  }
+  if (!post) return res.status(404).send("Post not found");
 
   res.render("post.html", {
     title: post.title,

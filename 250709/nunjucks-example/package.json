@@ -1,18 +1,27 @@
 {
+  "name": "nunjucks-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run build && node ./dist/app.js",
+    "dev": "nodemon",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
   "dependencies": {
-    "@types/axios": "^0.14.4",
-    "axios": "^1.10.0",
     "cors": "^2.8.5",
     "dotenv": "^17.1.0",
     "express": "^5.1.0",
-    "node-fetch": "2",
-    "nunjucks": "^3.2.4",
-    "zod": "^3.25.67"
+    "nunjucks": "^3.2.4"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
-    "@types/jest": "^30.0.0",
     "@types/node": "^24.0.12",
     "@types/nunjucks": "^3.2.6",
     "nodemon": "^3.1.10",

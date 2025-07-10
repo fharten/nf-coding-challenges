@@ -18,7 +18,18 @@ nunjucks.configure("src/templates", {
   express: app,
 });
 
-const newBlogData = blogData.map((p) => ({
+interface BlogPost {
+  title: string;
+  image: string;
+  author: string;
+  createdAt: number;
+  date?: string;
+  teaser: string;
+  content: string;
+  slug?: string;
+}
+
+const newBlogData: BlogPost[] = blogData.map((p) => ({
   ...p,
   slug: slugify(p.title, { remove: /[*+~.,()'"!:@]/g }),
   date: new Date(p.createdAt * 1000).toLocaleDateString("de-DE"),

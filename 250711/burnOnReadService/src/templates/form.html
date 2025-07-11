@@ -1,0 +1,12 @@
+{% extends '_baseLayout.html' %}
+{% block body %}
+  <form action="/create" method="POST">
+    <textarea
+      name="message"
+      required
+      placeholder="Write super secret message..."
+      aria-label="Super secret message"
+    ></textarea>
+    <button type="submit" class="secondary">Send</button>
+  </form>
+{% endblock %}

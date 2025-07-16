@@ -9,7 +9,7 @@ export const adminBlogController = async (req: Request, res: Response) => {
   res.render("../views/admin/indexPage.html", {
     blogEntriesWithSlug,
     meta: {
-      title: "Admin",
+      title: "Admin Panel",
       url: req.url,
     },
     header: {

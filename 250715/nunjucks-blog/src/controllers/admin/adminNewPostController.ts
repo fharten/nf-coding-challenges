@@ -10,7 +10,7 @@ export const adminNewPostController = async (req: Request, res: Response) => {
   res.render("../views/admin/post.html", {
     blogEntriesWithSlug,
     meta: {
-      title: "Create Post",
+      title: "Admin Panel | Create Post",
       url: req.url,
       postUrl: "create",
     },

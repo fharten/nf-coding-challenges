@@ -1,4 +1,5 @@
 import express from "express";
+import { isAuthenticated } from "../middlewares/authMiddleware";
 
 import { adminBlogController } from "../controllers/admin/adminBlogController";
 import { adminPostController } from "../controllers/admin/adminPostController";
@@ -8,6 +9,8 @@ import { adminCreatePostController } from "../controllers/admin/adminCreatePostC
 import { adminNewPostController } from "../controllers/admin/adminNewPostController";
 
 const router = express.Router();
+
+router.use(isAuthenticated);
 
 router
   .get("/", adminBlogController)

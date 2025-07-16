@@ -12,7 +12,7 @@ export const adminPostController = async (req: Request, res: Response) => {
   res.render("../views/admin/post.html", {
     blogEntriesWithSlug: blogEntries,
     meta: {
-      title: "Edit Post",
+      title: "Admin Panel | Edit Post",
       postUrl: `update/${id}`,
     },
     mainData: {

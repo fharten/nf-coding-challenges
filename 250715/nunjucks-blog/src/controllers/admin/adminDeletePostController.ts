@@ -6,7 +6,7 @@ export const adminDeletePostController = async (
   res: Response,
 ) => {
   try {
-    await deletePost(req.params.slug);
+    await deletePost(req.params.id);
 
     res.redirect("/admin");
   } catch (error) {

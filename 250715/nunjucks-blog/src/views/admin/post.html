@@ -36,6 +36,14 @@
         id="hidden-slug"
         value="{{ mainData.slug }}"
       />
+      <h2 class="font-bold text-lg">Teaser</h2>
+      <input
+        required
+        name="teaser"
+        class="mb-6 border border-gray-200 rounded-sm px-4"
+        value="{{ mainData.teaser }}"
+      />
+      <h2 class="font-bold text-lg mt-6">Text</h2>
       <div id="editor" class="text-white">{{ mainData.content | safe }}</div>
       <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
       <script>

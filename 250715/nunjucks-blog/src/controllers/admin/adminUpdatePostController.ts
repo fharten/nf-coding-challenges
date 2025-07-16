@@ -11,7 +11,7 @@ export const adminUpdatePostController = async (
   };
 
   try {
-    await updatePost(updatedPost);
+    await updatePost(updatedPost, req.params.id);
     res.redirect("/admin");
   } catch (error) {
     res.status(500).send(`Error updating post: ${error}`);

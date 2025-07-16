@@ -67,13 +67,13 @@
             <td class="px-6 py-4">{{ post.date }}</td>
             <td class="px-3 py-4 text-right">
               <a
-                href="/admin/post/{{ post.slug }}"
+                href="/admin/post/{{ post.id }}"
                 class="font-medium text-blue-500"
                 ><i class="fa-solid fa-pen-to-square"></i
               ></a>
             </td>
             <td class="px-3 py-4 pr-6 text-right">
-              <form action="/admin/delete/{{ post.slug }}" method="POST">
+              <form action="/admin/delete/{{ post.id }}" method="POST">
                 <button type="submit"
                   class="font-medium text-red-500"
                   ><i class="fa-solid fa-trash"></i></i
@@ -85,4 +85,18 @@
       {% endfor %}
     </table>
   </div>
+
+  <script>
+    const searchInput = document.getElementById('table-search');
+    const rows = document.querySelectorAll('table tbody tr');
+
+    searchInput.addEventListener('input', function () {
+      const query = this.value.toLowerCase();
+
+      rows.forEach(row => {
+        const title = row.querySelector('th').textContent.toLowerCase();
+        row.style.display = title.includes(query) ? '' : 'none';
+      });
+    });
+  </script>
 {% endblock %}

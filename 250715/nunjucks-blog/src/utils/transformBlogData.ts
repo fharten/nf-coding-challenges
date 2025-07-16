@@ -5,7 +5,7 @@ import { BlogPost, BlogPosts } from "../types/BlogPost";
 export function transformBlogData(blogData: BlogPosts) {
   const transformedBlogData: BlogPosts = blogData.map((p: BlogPost) => ({
     ...p,
-    slug: slugify(p.title, { remove: /[*+~.,()'"!:@]/g }),
+    slug: slugify(p.title, { remove: /[*+~.,()'"!?:@]/g }),
     date: new Date(p.createdAt * 1000).toLocaleDateString(),
     updated: new Date(
       p.updatedAt ? p.updatedAt * 1000 : p.createdAt * 1000,
@@ -15,10 +15,10 @@ export function transformBlogData(blogData: BlogPosts) {
   return transformedBlogData;
 }
 
-export function sanitizeNewBlogData(post: BlogPost) {
+export function sanitizeNewBlogData(post: BlogPost, id: string) {
   const { title, image, author, teaser, content } = post;
-
   const sanitized = {
+    id: id,
     title: sanitizeHtml(title),
     image: sanitizeHtml(image),
     author: sanitizeHtml(author),

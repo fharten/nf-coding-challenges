@@ -1,5 +1,6 @@
 import { readFile, writeFile } from "node:fs/promises";
 import * as path from "node:path";
+import { v4 as uuidv4 } from "uuid";
 import { BlogPost, BlogPosts } from "../types/BlogPost";
 import {
   sanitizeNewBlogData,
@@ -26,35 +27,38 @@ export async function saveBlogPosts(posts: BlogPosts): Promise<void> {
 
 export async function createPost(post: BlogPost): Promise<void> {
   const posts = await getAllBlogEntries();
-  const sanitizedData = sanitizeNewBlogData(post);
+  const sanitizedPost = sanitizeNewBlogData(post, post.id);
+  const sanitizedPostWithId = { ...sanitizedPost, id: uuidv4() };
 
-  posts.push(sanitizedData);
+  posts.push(sanitizedPostWithId);
 
   await saveBlogPosts(posts);
 }
 
-export async function updatePost(updatedPost: BlogPost): Promise<void> {
+export async function updatePost(
+  updatedPost: BlogPost,
+  id: string,
+): Promise<void> {
   const posts = await getAllBlogEntries();
   const transformedBlogData = transformBlogData(posts);
+  const sanitizedPost = sanitizeNewBlogData(updatedPost, id);
 
-  const index = transformedBlogData.findIndex(
-    (p: BlogPost) => p.slug === updatedPost.slug,
-  );
+  const index = transformedBlogData.findIndex((p: BlogPost) => p.id === id);
   if (index === -1) throw new Error("Post not found");
 
   transformedBlogData[index] = {
     ...transformedBlogData[index],
-    ...updatedPost,
+    ...sanitizedPost,
   };
 
   await saveBlogPosts(transformedBlogData);
 }
 
-export async function deletePost(slug: string): Promise<void> {
+export async function deletePost(id: string): Promise<void> {
   const posts = await getAllBlogEntries();
   const transformedBlogData = transformBlogData(posts);
 
-  const filtered = transformedBlogData.filter((p: BlogPost) => p.slug !== slug);
+  const filtered = transformedBlogData.filter((p: BlogPost) => p.id !== id);
 
   await saveBlogPosts(filtered);
 }

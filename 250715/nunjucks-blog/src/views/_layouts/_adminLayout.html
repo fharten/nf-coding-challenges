@@ -35,10 +35,10 @@
       <div class="h-screen w-144 p-4">
         <div class="flex flex-col text-gray-200">
           {% if meta.url === '/' %}
-            <div class="text-green-400 flex items-center gap-2">
+            <a class="text-green-400 flex items-center gap-2" href="/admin">
               <i class="fa fa-file-lines"></i>
               <h1 class="text-xl font-bold">Posts</h1>
-            </div>
+            </a>
             <div class="pl-8 flex flex-col">
               <a class="text-green-400" href="/admin"
                 >All ({{ blogEntriesWithSlug.length }})</a
@@ -46,29 +46,29 @@
               <a href="/admin">Published ({{ blogEntriesWithSlug.length }})</a>
             </div>
           {% else %}
-            <div class="flex items-center gap-2">
+            <a class="flex items-center gap-2" href="/admin">
               <i class="fa fa-file-lines"></i>
               <h1 class="text-xl font-bold">Posts</h1>
-            </div>
+            </a>
             <div class="pl-8 flex flex-col">
               <a href="/admin">All ({{ blogEntriesWithSlug.length }})</a>
               <a href="/admin">Published ({{ blogEntriesWithSlug.length }})</a>
             </div>
           {% endif %}
           <div class="flex flex-col">
-            <div>
+            <a href="#">
               <h1 class="text-xl font-bold">Stats</h1>
-            </div>
+            </a>
           </div>
           <div class="flex flex-col">
-            <div>
+            <a href="#">
               <h1 class="text-xl font-bold">Comments</h1>
-            </div>
+            </a>
           </div>
           <div class="flex flex-col">
-            <div>
+            <a href="#">
               <h1 class="text-xl font-bold">Earnings</h1>
-            </div>
+            </a>
           </div>
         </div>
       </div>

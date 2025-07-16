@@ -12,9 +12,9 @@ const router = express.Router();
 router
   .get("/", adminBlogController)
   .get("/post", adminNewPostController)
-  .get("/post/:slug", adminPostController)
+  .get("/post/:id", adminPostController)
   .post("/create", adminCreatePostController)
-  .post("/update/:slug", adminUpdatePostController)
-  .post("/delete/:slug", adminDeletePostController);
+  .post("/update/:id", adminUpdatePostController)
+  .post("/delete/:id", adminDeletePostController);
 
 export default router;

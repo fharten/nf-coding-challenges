@@ -11,7 +11,7 @@ const MSG_DIR = path.join(__dirname, "..", "..", "messages");
     await access(MSG_DIR, constants.F_OK);
     return true;
   } catch (error) {
-    console.error(`Error accassing directory: ${error}`);
+    console.error(`Error accessing directory: ${error}`);
     return false;
   }
 })();

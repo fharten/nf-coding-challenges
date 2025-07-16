@@ -8,7 +8,7 @@ export function sanitizeInput(input: string): string {
         '"': "&quot;",
         "'": "&#39;",
         "/": "&#x2F;",
-        "\n": "<br>",
+        "\n": "<br>", // nicht machen - lieber output als read-only textarea
       }[char] || char
     );
   });

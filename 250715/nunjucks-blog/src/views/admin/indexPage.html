@@ -1,0 +1,88 @@
+{% extends '../_layouts/_adminLayout.html' %}
+
+{% block content %}
+  <div class="flex my-6">
+    <a href='/admin/post' class="flex-1">
+      <button class="bg-green-300 px-4 py-1 rounded-sm">
+        <i class="fa fa-file-lines"></i>
+        <span class="pl-2"> New Post </span>
+      </button>
+    </a>
+    <div class="pb-4 bg-white dark:bg-gray-900">
+      <label for="table-search" class="sr-only">Search</label>
+      <div class="relative items-center">
+        <div
+          class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none"
+        >
+          <svg
+            class="w-4 h-4 text-gray-500 dark:text-gray-400"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 20 20"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+            />
+          </svg>
+        </div>
+        <input
+          type="text"
+          id="table-search"
+          class="block py-1 ps-10 text-sm text-gray-900 border border-gray-300 rounded-sm w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Search for posts"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-400">
+      <thead class="text-xs uppercase bg-gray-700 text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3">Title</th>
+          <th scope="col" class="px-6 py-3">Author</th>
+          <th scope="col" class="px-6 py-3">Date</th>
+          <th scope="col" class="p-3">
+            <span class="sr-only">Edit</span>
+          </th>
+          <th scope="col" class="p-3 pr-6">
+            <span class="sr-only">Delete</span>
+          </th>
+        </tr>
+      </thead>
+      {% for post in blogEntriesWithSlug %}
+        <tbody>
+          <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
+            <th
+              scope="row"
+              class="px-6 py-4 font-medium whitespace-nowrap text-gray-200 truncate"
+            >
+              {{ post.title }}
+            </th>
+            <td class="px-6 py-4">{{ post.author }}</td>
+            <td class="px-6 py-4">{{ post.date }}</td>
+            <td class="px-3 py-4 text-right">
+              <a
+                href="/admin/post/{{ post.slug }}"
+                class="font-medium text-blue-500"
+                ><i class="fa-solid fa-pen-to-square"></i
+              ></a>
+            </td>
+            <td class="px-3 py-4 pr-6 text-right">
+              <form action="/admin/delete/{{ post.slug }}" method="POST">
+                <button type="submit"
+                  class="font-medium text-red-500"
+                  ><i class="fa-solid fa-trash"></i></i
+                ></button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      {% endfor %}
+    </table>
+  </div>
+{% endblock %}

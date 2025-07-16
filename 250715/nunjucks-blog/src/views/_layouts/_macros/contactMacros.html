@@ -1,0 +1,24 @@
+{% macro input(id, type, placeholder, label) %}
+  <div class="form-floating">
+    <input
+      class="form-control"
+      id="{{ id }}"
+      type="{{ type }}"
+      placeholder="{{ placeholder }}"
+    />
+    <label for="{{ id }}">{{ label }}</label>
+  </div>
+{% endmacro %}
+
+{% macro textarea(id, placeholder, label) %}
+  <div class="form-floating">
+    <textarea
+      class="form-control"
+      id="{{ id }}"
+      placeholder="{{ placeholder }}"
+      style="height: 12rem"
+      data-sb-validations="required"
+    ></textarea>
+    <label for="{{ id }}">{{ label }}</label>
+  </div>
+{% endmacro %}

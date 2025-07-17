@@ -7,6 +7,7 @@ import { adminUpdatePostController } from "../controllers/admin/adminUpdatePostC
 import { adminDeletePostController } from "../controllers/admin/adminDeletePostController";
 import { adminCreatePostController } from "../controllers/admin/adminCreatePostController";
 import { adminNewPostController } from "../controllers/admin/adminNewPostController";
+import { adminLoginController } from "../controllers/admin/adminLoginController";
 
 const router = express.Router();
 

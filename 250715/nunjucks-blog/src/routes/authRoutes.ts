@@ -1,9 +1,11 @@
 import express from "express";
 import passport from "passport";
+import { adminLoginController } from "../controllers/admin/adminLoginController";
 
 const router = express.Router();
 
 router
+  .get("/auth/login", adminLoginController)
   .get("/auth/github", passport.authenticate("github"))
   .get(
     "/auth/github/callback",

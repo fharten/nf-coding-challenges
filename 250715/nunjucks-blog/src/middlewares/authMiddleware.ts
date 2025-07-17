@@ -8,5 +8,5 @@ export function isAuthenticated(
   if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect("/auth/github");
+  res.redirect("/auth/login");
 }

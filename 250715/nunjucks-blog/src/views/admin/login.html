@@ -1,0 +1,37 @@
+{% extends '../_layouts/_authLayout.html' %}
+
+{% block content %}
+  <section class="bg-gray-900">
+    <div
+      class="flex flex-col items-center px-6 py-8 mx-auto md:h-screen lg:py-0"
+    >
+      <a
+        href="/"
+        class="flex items-center pt-48 mb-12 gap-6 text-2xl font-semibold text-gray-200"
+      >
+        <i class="fa fa-blog"></i>
+        Bootstrap Blog
+      </a>
+      <div
+        class="w-full rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0 bg-gray-800 border-gray-700"
+      >
+        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+          <h1
+            class="text-xl font-bold leading-tight tracking-tight md:text-2xl text-gray-200"
+          >
+            Sign in with GitHub
+          </h1>
+          <form class="space-y-4 md:space-y-6" action="/auth/github">
+            <button
+              type="submit"
+              class="w-full text-gray-500 bg-green-300 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+            >
+              <i class="fa fa-github"></i>
+              Sign in
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

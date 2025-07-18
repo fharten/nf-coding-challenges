@@ -17,7 +17,9 @@ export function sanitizeBlogPost(post: BlogPost) {
     updatedAt: Math.floor(Date.now() / 1000),
     date: date ? date : new Date(Date.now()).toLocaleDateString(),
     updated: new Date(Date.now()).toLocaleDateString(),
-    slug: post.slug ? post.slug : slugify(title, { remove: /[*+~.,()'"!:@]/g }),
+    slug: post.slug
+      ? post.slug
+      : slugify(title, { remove: /[*+~.,()'"!?:@]/g }),
   };
 
   return sanitized;

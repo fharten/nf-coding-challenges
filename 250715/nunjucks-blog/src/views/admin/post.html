@@ -22,7 +22,7 @@
         value="{{ mainData.image }}"
       />
       <h2 class="font-bold text-lg">Author</h2>
-      {% if mainData.author %}
+      {# {% if mainData.author %}
         <select
           name="author"
           id="author"
@@ -36,19 +36,23 @@
             <option value="{{ author.id }}">{{ author.name }}</option>
           {% endfor %}
         </select>
-      {% else %}
-        <select
-          name="author"
-          id="author"
-          class="mb-6 border border-gray-200 rounded-sm px-4"
-          required
-        >
-          <option disabled>Select author</option>
-          {% for author in authors %}
+      {% else %} #}
+      <select
+        name="author"
+        id="author"
+        class="mb-6 border border-gray-200 rounded-sm px-4"
+        required
+      >
+        <option disabled>Select author</option>
+        {% for author in authors %}
+          {% if mainData.author === author.id %}
+            <option value="{{ author.id }}" selected>{{ author.name }}</option>
+          {% else %}
             <option value="{{ author.id }}">{{ author.name }}</option>
-          {% endfor %}
-        </select>
-      {% endif %}
+          {% endif %}
+        {% endfor %}
+      </select>
+      {# {% endif %} #}
       <input required type="hidden" name="content" id="hidden-content" />
       <input
         type="hidden"

@@ -14,7 +14,7 @@ export const authorController = async (req: Request, res: Response) => {
 
   res.render("../views/pages/author.html", {
     meta: {
-      title: author.name,
+      title: `Author | ${author.name}`,
     },
     blogEntries,
     author: {

@@ -12,38 +12,68 @@ export function connectDB(): Promise<sqlite3.Database> {
     db = new dbInstance.Database(
       DB_FILE,
       sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
-      (err: Error | null) => {
-        if (err) {
-          console.error("Error connecting to database:", err.message);
-          reject(err);
+      (error: Error | null) => {
+        if (error) {
+          console.error("Error connecting to database:", error.message);
+          reject(error);
         } else {
           console.log("Connected to the SQLite database.");
-          db!.run(
-            `
-                    CREATE TABLE IF NOT EXISTS blog_entries (
-                        id TEXT PRIMARY KEY,
-                        title TEXT NOT NULL,
-                        teaser TEXT NOT NULL,
-                        author TEXT NOT NULL,
-                        createdAt INTEGER NOT NULL,
-                        date TEXT,
-                        updatedAt INTEGER,
-                        updated TEXT,
-                        image TEXT NOT NULL,
-                        content TEXT NOT NULL,
-                        slug TEXT
+          db?.serialize(() => {
+            db!.run(
+              `
+                CREATE TABLE IF NOT EXISTS blog_entries (
+                  id TEXT PRIMARY KEY,
+                  title TEXT NOT NULL,
+                  teaser TEXT NOT NULL,
+                  author TEXT NOT NULL,
+                  createdAt INTEGER NOT NULL,
+                  date TEXT,
+                  updatedAt INTEGER,
+                  updated TEXT,
+                  image TEXT NOT NULL,
+                  content TEXT NOT NULL,
+                  slug TEXT
+                )
+              `,
+              (errorBlogEntries: Error | null) => {
+                if (errorBlogEntries) {
+                  console.error(
+                    "Error creating blog_entries table:",
+                    errorBlogEntries.message,
+                  );
+                  return reject(errorBlogEntries);
+                }
+
+                console.log("blog_entries table checked/created.");
+
+                db!.run(
+                  `
+                    CREATE TABLE IF NOT EXISTS authors (
+                      id TEXT PRIMARY KEY,
+                      name TEXT NOT NULL,
+                      bio TEXT,
+                      avatar TEXT,
+                      email TEXT,
+                      createdAt INTEGER NOT NULL,
+                      date TEXT
                     )
-                `,
-            (createErr: Error | null) => {
-              if (createErr) {
-                console.error("Error creating table:", createErr.message);
-                reject(createErr);
-              } else {
-                console.log("Blog table checked/created.");
-                resolve(db as sqlite3.Database);
-              }
-            },
-          );
+                  `,
+                  (errorAuthors: Error | null) => {
+                    if (errorAuthors) {
+                      console.error(
+                        "Error creating authors table:",
+                        errorAuthors.message,
+                      );
+                      return reject(errorAuthors);
+                    }
+
+                    console.log("authors table checked/created.");
+                    resolve(db as sqlite3.Database);
+                  },
+                );
+              },
+            );
+          });
         }
       },
     );

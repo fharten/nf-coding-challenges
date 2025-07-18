@@ -12,7 +12,6 @@ export const adminBlogController = async (req: Request, res: Response) => {
     },
     header: {
       title: "All posts",
-      image: "colorful-umbrella.jpg",
     },
   });
 };

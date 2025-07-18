@@ -1,5 +1,5 @@
 import { BlogPost, BlogPosts } from "../types/BlogPost";
-import { sanitizeBlogPost } from "../utils/transformBlogPost";
+import { sanitizeBlogPost } from "../utils/transformData";
 import { getDB } from "../db/database";
 
 export async function getAllBlogEntries(): Promise<BlogPosts> {
@@ -9,6 +9,24 @@ export async function getAllBlogEntries(): Promise<BlogPosts> {
     db.all<BlogPost>(
       `SELECT * FROM blog_entries`,
       [],
+      (error: Error | null, rowData: BlogPosts) => {
+        if (error) return reject(error);
+        resolve(rowData);
+      },
+    );
+  });
+}
+
+export async function getBlogEntriesByAuthor(
+  authorId: string,
+): Promise<BlogPosts> {
+  const db = getDB();
+  console.log(authorId);
+
+  return new Promise((resolve, reject) => {
+    db.all<BlogPost>(
+      `SELECT * FROM blog_entries WHERE author = ?`,
+      [authorId],
       (error: Error | null, rowData: BlogPosts) => {
         if (error) return reject(error);
         resolve(rowData);

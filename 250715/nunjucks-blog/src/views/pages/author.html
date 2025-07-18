@@ -1,0 +1,68 @@
+{% extends '_layouts/_baseLayout.html' %}
+
+<head>
+  <link href="/css/output.css" rel="stylesheet" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css"
+    rel="stylesheet"
+  />
+  <script
+    src="https://kit.fontawesome.com/af1b258980.js"
+    crossorigin="anonymous"
+  ></script>
+</head>
+
+{% block pageHeader %}
+  <header
+    class="authorMasthead"
+    style="background-image: url('/assets/img/{{ author.avatar }}')"
+  >
+    <div class="container position-relative px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="post-heading">
+            <h1 class="mb-5">{{ author.name }}</h1>
+            <div class="my-5">
+              <h2 class="subheading text-end text-white-50 mt-5">
+                Joined: {{ author.date }}
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+{% endblock %}
+{% block maincontent %}
+  <article class="mb-4">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <p class="mb-5">{{ author.bio | safe }}</p>
+        </div>
+      </div>
+    </div>
+  </article>
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <h4 class="small text-secondary">Posts by {{ author.firstName }}</h4>
+        {% for post in blogEntries %}
+          <div class="post-preview">
+            <a href="/post/{{ post.slug }}">
+              <h2 class="post-title">{{ post.title }}</h2>
+              <h3 class="post-subtitle">{{ post.teaser }}</h3>
+            </a>
+            <p class="post-meta">Posted on {{ post.date }}</p>
+          </div>
+          <!-- Divider-->
+          <hr class="my-4" />
+        {% endfor %}
+        <p class="text-secondary mt-5 text-end">
+          Get in touch:
+          <a href="mailto:{{ author.email }}">{{ author.email }}</a>
+        </p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

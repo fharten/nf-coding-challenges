@@ -63,11 +63,19 @@
               <a href="/admin">Published ({{ blogEntries.length }})</a>
             </div>
           {% endif %}
-          <div class="flex flex-col">
-            <a href="#">
-              <h1 class="text-xl font-bold">Stats</h1>
-            </a>
-          </div>
+          {% if meta.url === '/authors' %}
+            <div class="flex flex-col">
+              <a class="text-green-300" href="/admin/authors">
+                <h1 class="text-xl font-bold">Authors</h1>
+              </a>
+            </div>
+          {% else %}
+            <div class="flex flex-col">
+              <a href="/admin/authors">
+                <h1 class="text-xl font-bold">Authors</h1>
+              </a>
+            </div>
+          {% endif %}
           <div class="flex flex-col">
             <a href="#">
               <h1 class="text-xl font-bold">Comments</h1>

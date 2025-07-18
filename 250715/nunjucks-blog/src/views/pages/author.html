@@ -21,7 +21,11 @@
       <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
           <div class="post-heading">
-            <h1 class="mb-5">{{ author.name }}</h1>
+            <div class="d-flex">
+              <h1 class="mb-5 px-3 py-2" style="background-color: white;">
+                {{ author.name }}
+              </h1>
+            </div>
             <div class="my-5">
               <h2 class="subheading text-end text-white-50 mt-5">
                 Joined: {{ author.date }}

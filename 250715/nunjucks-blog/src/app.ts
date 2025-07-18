@@ -10,6 +10,7 @@ import { logger } from "./middlewares/loggerMiddleware";
 import publicRoutes from "./routes/publicRoutes";
 import adminRoutes from "./routes/adminRoutes";
 import authRoutes from "./routes/authRoutes";
+import { connectDB } from "./db/database";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -17,6 +18,7 @@ const port = process.env.PORT || 3000;
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.use(logger);
 app.use(
   session({
     secret: process.env.AUTH_SECRET!,
@@ -24,8 +26,6 @@ app.use(
     saveUninitialized: false,
   }),
 );
-
-app.use(logger);
 
 configurePassport();
 app.use(passport.initialize());
@@ -41,8 +41,14 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(publicRoutes).use("/admin", adminRoutes).use(authRoutes);
+connectDB()
+  .then(() => {
+    app.use(publicRoutes).use("/admin", adminRoutes).use(authRoutes);
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+    app.listen(port, () => {
+      console.log(`Server running at http://localhost:${port}`);
+    });
+  })
+  .catch((error: Error) => {
+    console.error(`Failed to start Database server: ${error}`);
+  });

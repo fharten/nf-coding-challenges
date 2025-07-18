@@ -1,64 +1,127 @@
-import { readFile, writeFile } from "node:fs/promises";
-import * as path from "node:path";
-import { v4 as uuidv4 } from "uuid";
 import { BlogPost, BlogPosts } from "../types/BlogPost";
-import {
-  sanitizeNewBlogData,
-  transformBlogData,
-} from "../utils/transformBlogData";
+import { sanitizeBlogPost } from "../utils/transformBlogPost";
+import { getDB } from "../db/database";
 
-const FILE_PATH = path.join(__dirname, "..", "data", "blog-entries.json");
+export async function getAllBlogEntries(): Promise<BlogPosts> {
+  const db = getDB();
 
-export async function getAllBlogEntries() {
-  try {
-    const blogEntries = await readFile(FILE_PATH, { encoding: "utf-8" });
-
-    if (blogEntries.length === 0) return [];
-
-    return JSON.parse(blogEntries);
-  } catch (error) {
-    console.error(`Error getting blog entries. ${error}`);
-  }
+  return new Promise((resolve, reject) => {
+    db.all<BlogPost>(
+      `SELECT * FROM blog_entries`,
+      [],
+      (error: Error | null, rowData: BlogPosts) => {
+        if (error) return reject(error);
+        resolve(rowData);
+      },
+    );
+  });
 }
 
-export async function saveBlogPosts(posts: BlogPosts): Promise<void> {
-  await writeFile(FILE_PATH, JSON.stringify(posts, null, 2), "utf-8");
-}
+export async function createPost(post: BlogPost): Promise<Number> {
+  const db = getDB();
+  const sanitizedPost = sanitizeBlogPost(post);
+  const {
+    id,
+    title,
+    image,
+    author,
+    createdAt,
+    updatedAt,
+    updated,
+    date,
+    teaser,
+    content,
+    slug,
+  } = sanitizedPost;
 
-export async function createPost(post: BlogPost): Promise<void> {
-  const posts = await getAllBlogEntries();
-  const sanitizedPost = sanitizeNewBlogData(post, post.id);
-  const sanitizedPostWithId = { ...sanitizedPost, id: uuidv4() };
-
-  posts.push(sanitizedPostWithId);
-
-  await saveBlogPosts(posts);
+  return new Promise((resolve, reject) => {
+    db.run(
+      `
+      INSERT INTO blog_entries (
+        id, title, image, author, createdAt, updatedAt, updated,
+        date, teaser, content, slug
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `,
+      [
+        id,
+        title,
+        image,
+        author,
+        createdAt,
+        updatedAt,
+        updated,
+        date,
+        teaser,
+        content,
+        slug,
+      ],
+      function (error: Error | null) {
+        if (error) return reject(error);
+        resolve(this.lastID);
+      },
+    );
+  });
 }
 
 export async function updatePost(
   updatedPost: BlogPost,
   id: string,
-): Promise<void> {
-  const posts = await getAllBlogEntries();
-  const transformedBlogData = transformBlogData(posts);
-  const sanitizedPost = sanitizeNewBlogData(updatedPost, id);
+): Promise<Number> {
+  const db = getDB();
+  const sanitizedPost = sanitizeBlogPost(updatedPost);
+  const {
+    title,
+    image,
+    author,
+    createdAt,
+    updatedAt,
+    updated,
+    date,
+    teaser,
+    content,
+  } = sanitizedPost;
 
-  const index = transformedBlogData.findIndex((p: BlogPost) => p.id === id);
-  if (index === -1) throw new Error("Post not found");
-
-  transformedBlogData[index] = {
-    ...transformedBlogData[index],
-    ...sanitizedPost,
-  };
-
-  await saveBlogPosts(transformedBlogData);
+  return new Promise((resolve, reject) => {
+    db.run(
+      `
+      UPDATE blog_entries 
+        SET title = ?, image = ?, author = ?, createdAt = ?, updatedAt = ?, updated = ?,
+        date = ?, teaser = ?, content = ?
+        WHERE id = ?
+      `,
+      [
+        title,
+        image,
+        author,
+        createdAt,
+        updatedAt,
+        updated,
+        date,
+        teaser,
+        content,
+        id,
+      ],
+      function (error: Error | null) {
+        if (error) return reject(error);
+        resolve(this.changes);
+      },
+    );
+  });
 }
 
-export async function deletePost(id: string): Promise<void> {
-  const posts = await getAllBlogEntries();
-  const transformedBlogData = transformBlogData(posts);
+export async function deletePost(id: string): Promise<Number> {
+  const db = getDB();
 
-  const filtered = transformedBlogData.filter((p: BlogPost) => p.id !== id);
-
-  await saveBlogPosts(filtered);
+  return new Promise((resolve, reject) => {
+    db.run(
+      `
+      DELETE FROM blog_entries where id = ?
+      `,
+      [id],
+      function (error: Error | null) {
+        if (error) return reject(error);
+        resolve(this.changes);
+      },
+    );
+  });
 }

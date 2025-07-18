@@ -1,13 +1,11 @@
 import { Request, Response } from "express";
 import { getAllBlogEntries } from "../models/blogEntriesModel";
-import { transformBlogData } from "../utils/transformBlogData";
 
 export const homeController = async (req: Request, res: Response) => {
   const blogEntries = await getAllBlogEntries();
-  const blogEntriesWithSlug = transformBlogData(blogEntries);
 
   res.render("../views/pages/index.html", {
-    blogEntriesWithSlug,
+    blogEntries,
     meta: {
       title: "Home",
     },

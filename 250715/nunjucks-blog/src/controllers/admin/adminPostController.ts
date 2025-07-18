@@ -10,7 +10,7 @@ export const adminPostController = async (req: Request, res: Response) => {
   if (!post) return res.status(404).send("Post not found");
 
   res.render("../views/admin/post.html", {
-    blogEntriesWithSlug: blogEntries,
+    blogEntries,
     meta: {
       title: "Admin Panel | Edit Post",
       postUrl: `update/${id}`,

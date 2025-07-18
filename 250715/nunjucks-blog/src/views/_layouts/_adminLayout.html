@@ -49,9 +49,9 @@
             </a>
             <div class="pl-8 flex flex-col">
               <a class="text-green-300" href="/admin"
-                >All ({{ blogEntriesWithSlug.length }})</a
+                >All ({{ blogEntries.length }})</a
               >
-              <a href="/admin">Published ({{ blogEntriesWithSlug.length }})</a>
+              <a href="/admin">Published ({{ blogEntries.length }})</a>
             </div>
           {% else %}
             <a class="flex items-center gap-2" href="/admin">
@@ -59,8 +59,8 @@
               <h1 class="text-xl font-bold">Posts</h1>
             </a>
             <div class="pl-8 flex flex-col">
-              <a href="/admin">All ({{ blogEntriesWithSlug.length }})</a>
-              <a href="/admin">Published ({{ blogEntriesWithSlug.length }})</a>
+              <a href="/admin">All ({{ blogEntries.length }})</a>
+              <a href="/admin">Published ({{ blogEntries.length }})</a>
             </div>
           {% endif %}
           <div class="flex flex-col">

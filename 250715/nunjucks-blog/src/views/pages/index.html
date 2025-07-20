@@ -36,11 +36,25 @@
           <!-- Divider-->
           <hr class="my-4" />
         {% endfor %}
-
-        <!-- Pager-->
-        <div class="d-flex justify-content-end mb-4">
-          <a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a>
-        </div>
+        {% if blogEntries.length === 0 %}
+          <div class="post-preview">
+            <h2 class="post-title">No more posts.</h2>
+            <p>
+              You have reached the end of the blog. Come back tomorrow for new
+              content. Probably.
+            </p>
+            <a href="/"><h3 class="post-subtitle">Back to the home page</h3></a>
+          </div>
+          <!-- Pager-->
+        {% else %}
+          <div class="d-flex justify-content-end mb-4">
+            <a
+              class="btn btn-primary text-uppercase"
+              href="/page/{{ meta.nextPage }}"
+              >Older Posts →</a
+            >
+          </div>
+        {% endif %}
       </div>
     </div>
   </div>

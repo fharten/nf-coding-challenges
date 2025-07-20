@@ -8,7 +8,6 @@ export const authorController = async (req: Request, res: Response) => {
   const authors = await getAllAuthors();
   const author = authors.find((a: Author) => a.id === authorId);
   const blogEntries = await getBlogEntriesByAuthor(authorId);
-  console.log(blogEntries);
 
   if (!author) return res.status(404).send("Author not found");
 

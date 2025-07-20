@@ -10,6 +10,7 @@ const router = express.Router();
 
 router
   .get("/", homeController)
+  .get("/page/:number", homeController)
   .get("/index", homeController)
   .get("/about", aboutController)
   .get("/contact", contactController)

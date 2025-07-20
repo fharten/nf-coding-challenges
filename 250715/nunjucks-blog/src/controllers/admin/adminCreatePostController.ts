@@ -6,7 +6,6 @@ export const adminCreatePostController = async (
   res: Response,
 ) => {
   try {
-    console.log(req.body);
     await createPost(req.body);
     res.redirect("/admin");
   } catch (error) {

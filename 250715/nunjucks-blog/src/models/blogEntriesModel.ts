@@ -17,11 +17,27 @@ export async function getAllBlogEntries(): Promise<BlogPosts> {
   });
 }
 
+export async function getAllBlogEntriesSortedByDateDesc(
+  pageNumber: number,
+): Promise<BlogPosts> {
+  const db = getDB();
+
+  return new Promise((resolve, reject) => {
+    db.all<BlogPost>(
+      `SELECT * FROM blog_entries ORDER BY createdAt DESC LIMIT 5 OFFSET ?`,
+      [(pageNumber - 1) * 5],
+      (error: Error | null, rowData: BlogPosts) => {
+        if (error) return reject(error);
+        resolve(rowData);
+      },
+    );
+  });
+}
+
 export async function getBlogEntriesByAuthor(
   authorId: string,
 ): Promise<BlogPosts> {
   const db = getDB();
-  console.log(authorId);
 
   return new Promise((resolve, reject) => {
     db.all<BlogPost>(

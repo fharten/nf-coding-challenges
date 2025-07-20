@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
-import { getAllBlogEntries } from "../models/blogEntriesModel";
+import { getAllBlogEntriesSortedByDateDesc } from "../models/blogEntriesModel";
 import { getAllAuthors } from "../models/authorsModel";
 
 export const homeController = async (req: Request, res: Response) => {
-  const blogEntries = await getAllBlogEntries();
+  const pageNumber = req.params.number ? Number(req.params.number) : 1;
+  const blogEntries = await getAllBlogEntriesSortedByDateDesc(pageNumber);
   const authors = await getAllAuthors();
 
   const authorMap = new Map(authors.map((a) => [a.id, a.name]));
@@ -16,6 +17,8 @@ export const homeController = async (req: Request, res: Response) => {
     blogEntries: blogEntriesWithNames,
     meta: {
       title: "Home",
+      pageNumber,
+      nextPage: pageNumber + 1,
     },
     headerData: {
       image: "home-bg.jpg",

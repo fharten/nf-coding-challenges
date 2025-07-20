@@ -8,7 +8,7 @@ export function configurePassport() {
       {
         clientID: process.env.GITHUB_CLIENT_ID!,
         clientSecret: process.env.GITHUB_CLIENT_SECRET!,
-        callbackURL: "/auth/github/callback",
+        callbackURL: process.env.PASSPORT_CALLBACK_URL!,
       },
       (
         _accessToken: string,

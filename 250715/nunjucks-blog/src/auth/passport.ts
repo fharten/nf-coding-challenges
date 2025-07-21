@@ -24,7 +24,7 @@ export function configurePassport() {
           displayName: profile.displayName ?? "",
           profileUrl: (profile as any).profileUrl ?? "",
           date: new Date(Date.now()).toLocaleDateString(),
-          isAdmin: 0,
+          isAdmin: profile.id === "60267941" ? 1 : 0,
         };
 
         try {

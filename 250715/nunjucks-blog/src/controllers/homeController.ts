@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
-import { getAllBlogEntriesSortedByDateDesc } from "../models/blogEntriesModel";
+import { getAllBlogEntriesPaginatedSortedByDateDesc } from "../models/blogEntriesModel";
 import { getAllAuthors } from "../models/authorsModel";
 
 export const homeController = async (req: Request, res: Response) => {
   const pageNumber = req.params.number ? Number(req.params.number) : 1;
-  const blogEntries = await getAllBlogEntriesSortedByDateDesc(pageNumber);
+  const blogEntries =
+    await getAllBlogEntriesPaginatedSortedByDateDesc(pageNumber);
   const authors = await getAllAuthors();
 
   const authorMap = new Map(authors.map((a) => [a.id, a.name]));

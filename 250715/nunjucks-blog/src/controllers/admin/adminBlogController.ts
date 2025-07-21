@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { getAllBlogEntries } from "../../models/blogEntriesModel";
+import { getAllBlogEntriesSortedByDateDesc } from "../../models/blogEntriesModel";
 
 export const adminBlogController = async (req: Request, res: Response) => {
-  const blogEntries = await getAllBlogEntries();
+  const blogEntries = await getAllBlogEntriesSortedByDateDesc();
 
   res.render("../views/admin/indexPage.html", {
     blogEntries,

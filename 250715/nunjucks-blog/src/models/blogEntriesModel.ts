@@ -17,7 +17,7 @@ export async function getAllBlogEntries(): Promise<BlogPosts> {
   });
 }
 
-export async function getAllBlogEntriesSortedByDateDesc(
+export async function getAllBlogEntriesPaginatedSortedByDateDesc(
   pageNumber: number,
 ): Promise<BlogPosts> {
   const db = getDB();
@@ -26,6 +26,21 @@ export async function getAllBlogEntriesSortedByDateDesc(
     db.all<BlogPost>(
       `SELECT * FROM blog_entries ORDER BY createdAt DESC LIMIT 5 OFFSET ?`,
       [(pageNumber - 1) * 5],
+      (error: Error | null, rowData: BlogPosts) => {
+        if (error) return reject(error);
+        resolve(rowData);
+      },
+    );
+  });
+}
+
+export async function getAllBlogEntriesSortedByDateDesc(): Promise<BlogPosts> {
+  const db = getDB();
+
+  return new Promise((resolve, reject) => {
+    db.all<BlogPost>(
+      `SELECT * FROM blog_entries ORDER BY createdAt DESC`,
+      [],
       (error: Error | null, rowData: BlogPosts) => {
         if (error) return reject(error);
         resolve(rowData);

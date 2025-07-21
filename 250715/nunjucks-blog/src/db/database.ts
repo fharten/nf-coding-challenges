@@ -71,6 +71,31 @@ export function connectDB(): Promise<sqlite3.Database> {
                     resolve(db as sqlite3.Database);
                   },
                 );
+                db!.run(
+                  `
+                    CREATE TABLE IF NOT EXISTS users (
+                      id TEXT PRIMARY KEY,
+                      username TEXT NOT NULL,
+                      displayName TEXT,
+                      profileUrl TEXT,
+                      createdAt INTEGER NOT NULL,
+                      date TEXT,
+                      isAdmin INTEGER
+                    )
+                  `,
+                  (errorUsers: Error | null) => {
+                    if (errorUsers) {
+                      console.error(
+                        "Error creating users table:",
+                        errorUsers.message,
+                      );
+                      return reject(errorUsers);
+                    }
+
+                    console.log("users table checked/created.");
+                    resolve(db as sqlite3.Database);
+                  },
+                );
               },
             );
           });

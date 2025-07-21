@@ -10,7 +10,11 @@ router
   .get(
     "/auth/github/callback",
     passport.authenticate("github", { failureRedirect: "/" }),
-    (_req, res) => res.redirect("/admin"),
+    (req, res) => {
+      req.session.save(() => {
+        res.redirect("/admin");
+      });
+    },
   )
   .get("/logout", (req, res, next) => {
     req.logout((err) => {

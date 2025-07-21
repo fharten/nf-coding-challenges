@@ -11,6 +11,7 @@ import publicRoutes from "./routes/publicRoutes";
 import adminRoutes from "./routes/adminRoutes";
 import authRoutes from "./routes/authRoutes";
 import { connectDB } from "./db/database";
+import { CustomSQLiteStore } from "./store/CustomSQLiteStore";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -19,30 +20,38 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(logger);
-app.use(
-  session({
-    secret: process.env.AUTH_SECRET!,
-    resave: false,
-    saveUninitialized: false,
-  }),
-);
-
-configurePassport();
-app.use(passport.initialize());
-app.use(passport.session());
 
 nunjucks.configure("src/views", {
   autoescape: true,
   express: app,
 });
 
-app.use((req, res, next) => {
-  res.locals.user = req.user;
-  next();
-});
+configurePassport();
 
 connectDB()
   .then(() => {
+    app.use(
+      session({
+        store: new CustomSQLiteStore(),
+        secret: process.env.AUTH_SECRET!,
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+          secure: process.env.NODE_ENV === "production",
+          sameSite: "lax",
+          maxAge: 1000 * 60 * 60 * 24, // 1 day
+        },
+      }),
+    );
+
+    app.use(passport.initialize());
+    app.use(passport.session());
+
+    app.use((req, res, next) => {
+      res.locals.user = req.user;
+      next();
+    });
+
     app.use(publicRoutes).use("/admin", adminRoutes).use(authRoutes);
 
     app.listen(port, () => {

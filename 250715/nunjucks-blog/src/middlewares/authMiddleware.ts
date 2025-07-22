@@ -12,7 +12,7 @@ export async function isAuthenticated(
     passport?: { user?: string };
   };
   const userLoggedIn = await getUserById(session.passport?.user!);
-  if (req.isAuthenticated() && userLoggedIn.isAdmin) {
+  if (req.isAuthenticated() && userLoggedIn.isAdmin === 1) {
     return next();
   }
   res.redirect("/");

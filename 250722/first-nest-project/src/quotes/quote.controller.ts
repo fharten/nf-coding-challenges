@@ -1,6 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { QuoteService } from './quote.service';
-import { Quote, Quotes } from 'src/types/quotes';
+import { Quote, Quotes } from '../types/quotes';
 
 @Controller('quotes')
 export class QuoteController {
@@ -17,7 +17,7 @@ export class QuoteController {
   }
 
   @Get('/:id')
-  async getOne(@Param('id') id: string): Promise<Quote | undefined> {
+  async getOne(@Param('id') id: number): Promise<Quote | undefined> {
     const quote = this.quoteService.getQuoteById(id);
     return quote;
   }

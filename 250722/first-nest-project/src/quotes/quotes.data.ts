@@ -1,6 +1,6 @@
 import * as path from 'path';
 import { readFile } from 'node:fs/promises';
-import { Quotes } from 'src/types/quotes';
+import { Quotes } from '../types/quotes';
 
 const FILE_PATH = path.join(__dirname, '..', 'data', 'quotes.json');
 let cachedQuotes: Quotes | null = null;

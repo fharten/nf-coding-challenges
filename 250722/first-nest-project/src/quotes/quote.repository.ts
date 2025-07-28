@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Quote, Quotes } from 'src/types/quotes';
+import { Quote, Quotes } from '../types/quotes';
 import { getQuotesData } from './quotes.data';
 
 @Injectable() // This makes it injectable into other parts of NestJS
@@ -15,7 +15,7 @@ export class QuoteRepository {
     return [...this.quotes];
   }
 
-  async findById(id: string): Promise<Quote | undefined> {
+  async findById(id: number): Promise<Quote | undefined> {
     await this.init();
     return this.quotes.find((quote) => quote.id === id); // Find a user by ID
   }

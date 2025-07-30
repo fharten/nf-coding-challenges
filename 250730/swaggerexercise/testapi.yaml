@@ -1,0 +1,102 @@
+openapi: 3.0.3
+info:
+  title: Swagger Exercise
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/v1
+paths:
+  /hello/{name}:
+    get:
+      summary: Get a welcome message
+      parameters:
+        - in: path
+          name: name
+          required: true
+          schema:
+            type: string
+          description: User name
+      responses:
+        '200':
+          description: A personalized greeting
+          content:
+            text/plain:
+              example: Hello, {name}!
+  /users:
+    post:
+      summary: Creates a new user.
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: The user to create
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+
+      responses:
+        '201':
+          description: Successfully created user
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+  /users/{id}:
+    get:
+      summary: Get a user by ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: User Id
+      responses:
+        '200':
+          description: Successfully found user
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/User'
+        '404':
+          description: Unable to find user
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    User:
+      type: object
+      required: [name, email]
+      properties:
+        id:
+          type: integer
+          example: 10
+        name:
+          type: string
+          example: Kevin
+        email:
+          type: string
+          example: kevin@allekevins.de
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: User not found
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+
+security:
+  - bearerAuth: []

@@ -19,7 +19,7 @@ export class UsersService {
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(user.password, saltRounds);
 
-    const newUser = await this.usersRepository.create({
+    const newUser = this.usersRepository.create({
       name: user.name,
       password: hashedPassword,
       email: user.email,
@@ -27,12 +27,6 @@ export class UsersService {
 
     return this.usersRepository.save(newUser);
   }
-
-  // async create(user: Omit<User, 'id' | 'createdAt'>): Promise<User> {
-  //   const newUser = this.usersRepository.create(user); // Creates a new entity instance (not yet saved to DB)
-  //   console.log(newUser);
-  //   return this.usersRepository.save(newUser); // Saves the instance to the database
-  // }
 
   async findById(id: string): Promise<User | undefined> {
     return this.usersRepository.findOneBy({ id });

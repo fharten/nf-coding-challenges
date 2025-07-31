@@ -1,0 +1,168 @@
+[
+  {
+    "isbn": "1234511111111",
+    "title": "Tierisch gut kochen",
+    "subtitle": "Rezepte von Affe bis Zebra",
+    "description": "Immer lecker und gut.\n\nDu dachtest, nur Menschen könnten kochen? Falsch gedacht! In diesem Buch präsentieren wir die wildesten Rezepte direkt aus dem Tierreich – liebevoll gesammelt von den talentiertesten Köchen mit Fell, Federn und Flossen.\n\nErfahre, warum Affen auf Erdnussbutter-Pancakes schwören, wie Pinguine das perfekte Sushi zaubern und warum Giraffen am liebsten Hochstapler-Burger bauen. Von vegetarischen Koalafreuden bis hin zu Löwenstarken Grillrezepten – hier gibt’s für jeden Geschmack etwas!\n\nEin humorvolles Kochbuch für alle, die Spaß in der Küche haben, tierisch gute Gerichte lieben und sich nicht davor scheuen, beim Zubereiten auch mal den Herd mit einer Giraffe zu teilen. Achtung: Zebras bevorzugen Streifenmuster auf dem Teller!",
+    "authors": [
+      "Mrs Chimp",
+      "Mr Gorilla"
+    ],
+    "imageUrl": "https://cdn.ng-buch.de/kochen.png",
+    "createdAt": "2025-02-01T11:12:00+0100"
+  },
+  {
+    "isbn": "6789022222222",
+    "title": "Backen mit Affen",
+    "subtitle": "Bananenbrot und mehr",
+    "description": "Tolle Backtipps für Mensch und Tier\n\nHast du dich jemals gefragt, was passiert, wenn ein Affe einen Schneebesen in die Hand bekommt? Dieses Buch gibt die Antwort – und sie ist chaotischer (und köstlicher), als du denkst!\n\nIn diesem Buch lernst du nicht nur, wie du perfekte Bananenmuffins zauberst, sondern auch, warum Mehlbomben in der Küche eher suboptimal sind und wieso ein Affe niemals für den Hefeteig verantwortlich sein sollte. Von waghalsigen Waffel-Experimenten bis hin zu haarsträubenden Himbeertorten – hier bleibt kein Backblech sauber!\n\nEin Buch für alle, die gerne lachen, naschen und bereit sind, ihre Küche in ein wildes Abenteuer zu verwandeln. Perfekt für experimentierfreudige Bäcker und alle, die sich nicht davor scheuen, beim Backen auch mal an den Kronleuchter zu schwingen!",
+    "authors": [
+      "Orang Utan"
+    ],
+    "imageUrl": "https://cdn.ng-buch.de/backen.png",
+    "createdAt": "2025-01-20T11:12:00+0100"
+  },
+  {
+    "isbn": "9783960092421",
+    "title": "Cloud Security in der Praxis",
+    "subtitle": "Leitfaden für sicheres Softwaredesign und Deployment",
+    "description": "In diesem Praxisbuch erfahren Sie alles Wichtige über bewährte Sicherheitsmethoden für die gängigen Multivendor-Cloud-Umgebungen – unabhängig davon, ob Ihr Unternehmen alte On-Premises-Projekte in die Cloud verlagern oder eine Infrastruktur von Grund auf neu aufbauen möchte.",
+    "authors": [
+      "Chris Dotson"
+    ],
+    "imageUrl": "https://cdn.ng-buch.de/cover/clouddotson.jpg",
+    "createdAt": "2024-07-30T12:00:00+0200"
+  },
+  {
+    "isbn": "9783960092186",
+    "title": "TypeScript – Ein praktischer Einstieg",
+    "subtitle": "Typsicheres JavaScript für skalierbare Webanwendungen",
+    "description": "TypeScript hat die JavaScript-Welt erobert: Laut Umfragen ist es eine der beliebtesten und sich am schnellsten verbreitenden Sprachen weltweit. Mit seinem durchdachten Typsystem unterstützt TypeScript strukturiertes Programmieren, das Refaktorieren von Code und die Entwicklung skalierender Webanwendungen. JavaScript-Entwicklerinnen und -Entwickler, die bislang noch nichts mit Typen oder Typsystemen zu tun hatten, erhalten in diesem praktischen Buch alle erforderlichen Informationen, um Sprache und Typsystem gründlich zu verstehen und erfolgreich für ihre Projekte zu nutzen.",
+    "authors": [
+      "Josh Goldberg"
+    ],
+    "imageUrl": "https://cdn.ng-buch.de/cover/tsgoldberg.jpg",
+    "createdAt": "2023-06-29T12:00:00+0200"
+  },
+  {
+    "isbn": "9783864909467",
+    "title": "Angular (4. Auflage)",
+    "subtitle": "Das große Praxisbuch – Grundlagen, fortgeschrittene Themen und Best Practices",
+    "description": "Lernen Sie Angular mit diesem umfassenden Praxisbuch! Sie werden von Ferdinand Malcher, Danny Koppenhagen und Johannes Hoppe anhand eines anspruchsvollen Beispielprojekts durch die Welt von Angular geführt und entwickeln Schritt für Schritt eine umfangreiche modulare Single-Page-Anwendung.",
+    "authors": [
+      "Ferdinand Malcher",
+      "Danny Koppenhagen",
+      "Johannes Hoppe"
+    ],
+    "imageUrl": "https://cdn.ng-buch.de/cover/angular4.jpg",
+    "createdAt": "2023-02-15T12:00:00+0100"
+  },
+  {
+    "isbn": "9783864909009",
+    "title": "Vue.js",
+    "subtitle": "Von Grundlagen bis Best Practices",
+    "description": "Dieses Buch ist ein praxisnaher Einstieg für alle, die sich Vue einmal genauer ansehen möchten. ",
+    "authors": [
+      "Fabian Deitelhoff"
+    ],
+    "imageUrl": "https://cdn.ng-buch.de/cover/vue.jpg",
+    "createdAt": "2022-08-29T12:00:00+0200"
+  },
+  {
+    "isbn": "9783960091578",
+    "title": "JavaScript – Das Handbuch für die Praxis",
+    "subtitle": "Meistern Sie die beliebte Sprache für Web und Node.js",
+    "description": "Seit 25 Jahren das begleitende Grundlagenwerk zu JavaScript! JavaScript ist die Programmiersprache des Web und wird heute von mehr Softwareentwicklerinnen und -entwicklern eingesetzt als jede andere Sprache. Seit fast 25 Jahren dient ihnen dieser Bestseller als Praxishandbuch und zuverlässiger Begleiter. Die vorliegende siebte Auflage wurde vollständig aktualisiert und deckt die Version 2020 von JavaScript ab.",
+    "authors": [
+      "David Flanagan"
+    ],
+    "imageUrl": "https://cdn.ng-buch.de/cover/jsflanagan.jpg",
+    "createdAt": "2021-04-22T12:00:00+0200"
+  },
+  {
+    "isbn": "9783960091417",
+    "title": "GitHub – Eine praktische Einführung",
+    "subtitle": "Von den ersten Schritten bis zu eigenen GitHub Actions",
+    "description": "GitHub ist derzeit die größte Internetplattform für Open-Source-Entwicklungsprojekte und bietet ein grafisches Webinterface mit vielen Funktionen für die gemeinsame Arbeit sowie interessante Community-Features. Technisch setzt es auf der bekannten Versionsverwaltung Git auf.",
+    "authors": [
+      "Anke Lederer"
+    ],
+    "imageUrl": "https://cdn.ng-buch.de/cover/github.jpg",
+    "createdAt": "2021-02-26T12:00:00+0100"
+  },
+  {
+    "isbn": "9783864907845",
+    "title": "GraphQL",
+    "subtitle": "Eine Einführung in APIs mit GraphQL",
+    "description": "API-Design mit GraphQL für Um- und Einsteiger. In Anwendungen, bei denen es auf komplexe aber dennoch schlanke Datenabfragen ankommt, spielt GraphQL seine Vorteile aus. Dominik Kress gibt Ihnen dafür das nötige Wissen rund um API-Design und die GraphQL-spezifischen Datenmodelle an die Hand.",
+    "authors": [
+      "Dominik Kress"
+    ],
+    "imageUrl": "https://cdn.ng-buch.de/cover/graphql.jpg",
+    "createdAt": "2020-10-26T12:00:00+0100"
+  },
+  {
+    "isbn": "9783864907791",
+    "title": "Angular (3. Auflage)",
+    "subtitle": "Grundlagen, fortgeschrittene Themen und Best Practices – inkl. RxJS, NgRx & PWA (iX Edition)",
+    "description": "Lernen Sie Angular mit diesem Praxisbuch! Mit einem anspruchsvollen Beispielprojekt führen wir Sie durch die Welt von Angular. kldsdf",
+    "authors": [
+      "Ferdinand Malcher",
+      "Johannes Hoppe",
+      "Danny Koppenhagen"
+    ],
+    "imageUrl": "https://cdn.ng-buch.de/cover/angular3.jpg",
+    "createdAt": "2020-10-12T12:00:00+0200"
+  },
+  {
+    "isbn": "9783864905520",
+    "title": "React",
+    "subtitle": "Grundlagen, fortgeschrittene Techniken und Praxistipps – mit TypeScript und Redux",
+    "description": "Das bewährte und umfassende Praxisbuch zu React – jetzt komplett aktualisiert und erweitert!",
+    "authors": [
+      "Oliver Zeigermann",
+      "Nils Hartmann"
+    ],
+    "imageUrl": "https://cdn.ng-buch.de/cover/react2.jpg",
+    "createdAt": "2019-12-12T12:00:00+0100"
+  },
+  {
+    "isbn": "9783864906466",
+    "title": "Angular (2. Auflage)",
+    "subtitle": "Grundlagen, fortgeschrittene Themen und Best Practices – mit NativeScript und NgRx",
+    "description": "Die Autoren führen Sie mit einem anspruchsvollen Beispielprojekt durch die Welt von Angular. Lernen Sie Schritt für Schritt, wie Sie strukturierte und modulare Single-Page-Anwendungen entwickeln. Nach der erfolgreichen ersten Auflage wurde dieses Buch grundlegend aktualisiert und erweitert:\nDurchgängig aktualisiert auf Angular 7 und neuere Versionen, Redux mit Reactive Extensions for Angular (NgRx), Ausführliches Kapitel zu RxJS und Observables, Server-Side Rendering mit Angular Universal, HTTP-Interceptoren, Kompakter Schnelleinstieg in Angular mit Stackblitz.\n\nPraktisch: Der Programmcode zu jeder einzelnen Entwicklungsphase ist auf GitHub verfügbar. So können Sie alle Schritte gut nachvollziehen und auch Teile überspringen.",
+    "authors": [
+      "Ferdinand Malcher",
+      "Johannes Hoppe",
+      "Danny Koppenhagen"
+    ],
+    "imageUrl": "https://cdn.ng-buch.de/cover/angular2.jpg",
+    "createdAt": "2019-06-14T12:00:00+0200"
+  },
+  {
+    "isbn": "9783864903571",
+    "title": "Angular (1. Auflage)",
+    "subtitle": "Grundlagen, fortgeschrittene Techniken und Best Practices mit TypeScript - ab Angular 4, inklusive NativeScript und Redux",
+    "description": "Mit Angular setzen Sie auf ein modernes und modulares Web-Framework. Dieses Buch stellt Ihnen die Bausteine von Angular, viele Best Practices und die notwendigen Werkzeuge vor. Beginnen Sie Ihren Einstieg in die Welt von Angular mit einer praxisnahen Einführung.\n\nJedes Thema wird zunächst theoretisch behandelt und anschließend anhand einer durchgehenden Beispielanwendung (https://ng-buch.de/app) demonstriert.\nMeistern Sie die komponentenorientierte Webentwicklung und lernen Sie zusätzlich einen Weg zur Erstellung mobiler Apps (NativeScript) kennen. Mit der Redux-Architektur beherrschen Sie auch komplexe Anwendungen.\nSie werden als Einsteiger und auch als fortgeschrittener Webentwickler Freude bei der Lektüre dieses Buchs haben.)",
+    "authors": [
+      "Ferdinand Malcher",
+      "Johannes Hoppe",
+      "Danny Koppenhagen",
+      "Gregor Woiwode"
+    ],
+    "imageUrl": "https://cdn.ng-buch.de/cover/angular1.jpg",
+    "createdAt": "2017-05-22T12:00:00+0200"
+  },
+  {
+    "isbn": "9783864904523",
+    "title": "Git",
+    "subtitle": "Dezentrale Versionsverwaltung im Team – Grundlagen und Workflows",
+    "description": "Git ist eine der beliebtesten Versionsverwaltungen. Die Vielfalt an Kommandos, Optionen und Konfigurationen wirkt anfangs aber oft einschüchternd – obwohl die Grundkonzepte einfach sind und man schon mit wenigen davon effektiv arbeiten kann.",
+    "authors": [
+      "René Preißel",
+      "Bjørn Stachmann"
+    ],
+    "imageUrl": "https://cdn.ng-buch.de/cover/git5.jpg",
+    "createdAt": "2017-03-13T12:00:00+0100"
+  }
+]

@@ -5,11 +5,11 @@ info:
 servers:
   - url: http://localhost:3000/v1
 paths:
-  /hello/{name}:
+  /hello:
     get:
       summary: Get a welcome message
       parameters:
-        - in: path
+        - in: query
           name: name
           required: true
           schema:

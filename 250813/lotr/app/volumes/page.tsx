@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { volumes, introduction } from '../../data/data';
+import { volumes, introduction } from '@/data/data';
 
 export default function VolumesPage() {
   const router = useRouter();

@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { introduction } from '@/app/lib/data';
 import { Volume } from '../types/Volume';
+import { getVolumes } from '../volumes-actions';
 
 export default async function VolumesPage() {
-  const res = await fetch('http://localhost:3000/api/volumes');
-  const volumes = await res.json();
+  const volumes = await getVolumes();
 
   const randomIndex = Math.floor(Math.random() * volumes.length);
 
@@ -31,7 +31,7 @@ export default async function VolumesPage() {
         </div>
         <div className='text-center mt-20'>
           <Link
-            href={'/create'}
+            href={'/volumes/create'}
             className='px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors'
           >
             Create New Volume

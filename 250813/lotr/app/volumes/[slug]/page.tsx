@@ -1,6 +1,5 @@
 import Image from 'next/image';
-import { Volume } from '@/app/types/Volume';
-import { volumes } from '@/data/data';
+import { Book, Volume } from '@/app/types/Volume';
 import Link from 'next/link';
 
 export default async function VolumePage({
@@ -10,8 +9,11 @@ export default async function VolumePage({
 }) {
   const { slug } = await params;
 
+  const res = await fetch('http://localhost:3000/api');
+  const volumes = await res.json();
+
   const volume = volumes.find((v: Volume) => v.slug === slug);
-  const volumeIndex = volumes.findIndex((v) => v.slug === slug);
+  const volumeIndex = volumes.findIndex((v: Volume) => v.slug === slug);
   const prevVolume = volumes[volumeIndex - 1];
   const nextVolume = volumes[volumeIndex + 1];
 
@@ -36,7 +38,7 @@ export default async function VolumePage({
           </div>
           <p className='text-left'>{volume.description}</p>
           <h2 className='font-bold text-xl'>Books:</h2>
-          {volume.books.map((book) => (
+          {volume.books.map((book: Book) => (
             <div key={book.ordinal}>
               <p>{book.ordinal}</p>
               <p>{book.title}</p>

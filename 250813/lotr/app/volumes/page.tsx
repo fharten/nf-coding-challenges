@@ -1,7 +1,11 @@
 import Link from 'next/link';
-import { volumes, introduction } from '@/data/data';
+import { introduction } from '@/app/lib/data';
+import { Volume } from '../types/Volume';
 
-export default function VolumesPage() {
+export default async function VolumesPage() {
+  const res = await fetch('http://localhost:3000/api');
+  const volumes = await res.json();
+
   const randomIndex = Math.floor(Math.random() * volumes.length);
 
   return (
@@ -10,7 +14,7 @@ export default function VolumesPage() {
       <p>{introduction}</p>
       <h2 className='text-xl'>All Volumes</h2>
       <ul className='flex flex-col gap-5'>
-        {volumes.map((volume) => (
+        {volumes.map((volume: Volume) => (
           <li key={volume.slug} className='text-blue-500 hover:underline'>
             <Link href={`/volumes/${volume.slug}`}>{volume.title}</Link>
           </li>

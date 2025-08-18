@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Book, Volume } from '@/app/types/Volume';
 import Link from 'next/link';
+import { getVolumes } from '@/app/volumes-actions';
 
 export default async function VolumePage({
   params,
@@ -9,8 +10,7 @@ export default async function VolumePage({
 }) {
   const { slug } = await params;
 
-  const res = await fetch('http://localhost:3000/api/volumes');
-  const volumes = await res.json();
+  const volumes = await getVolumes();
 
   const volume = volumes.find((v: Volume) => v.slug === slug);
   const volumeIndex = volumes.findIndex((v: Volume) => v.slug === slug);
@@ -36,12 +36,20 @@ export default async function VolumePage({
               height={300}
             />
           </div>
-          <Link
-            href={`/volumes/${volume.slug}/edit`}
-            className='px-4 py-2 bg-white text-black rounded hover:bg-gray-200'
-          >
-            Edit
-          </Link>
+          <div className='flex gap-x-5'>
+            <Link
+              href={`/volumes/${volume.slug}/edit`}
+              className='px-4 py-2 bg-white text-black rounded hover:bg-gray-200'
+            >
+              Edit
+            </Link>
+            <Link
+              href={`/volumes/${volume.slug}/delete`}
+              className='px-4 py-2 bg-red-500 text-black rounded hover:bg-red-700'
+            >
+              Delete
+            </Link>
+          </div>
           <p className='text-left mt-5'>{volume.description}</p>
           <h2 className='font-bold text-xl'>Books:</h2>
           {volume.books.map((book: Book) => (

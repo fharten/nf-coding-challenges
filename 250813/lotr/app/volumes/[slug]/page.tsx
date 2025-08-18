@@ -9,7 +9,7 @@ export default async function VolumePage({
 }) {
   const { slug } = await params;
 
-  const res = await fetch('http://localhost:3000/api');
+  const res = await fetch('http://localhost:3000/api/volumes');
   const volumes = await res.json();
 
   const volume = volumes.find((v: Volume) => v.slug === slug);
@@ -36,7 +36,13 @@ export default async function VolumePage({
               height={300}
             />
           </div>
-          <p className='text-left'>{volume.description}</p>
+          <Link
+            href={`/volumes/${volume.slug}/edit`}
+            className='px-4 py-2 bg-white text-black rounded hover:bg-gray-200'
+          >
+            Edit
+          </Link>
+          <p className='text-left mt-5'>{volume.description}</p>
           <h2 className='font-bold text-xl'>Books:</h2>
           {volume.books.map((book: Book) => (
             <div key={book.ordinal}>

@@ -150,10 +150,10 @@ const WebSocketDemo: React.FC = () => {
             }
           >
             {data.username ? (
-              <>
+              <div className='flex gap-x-2'>
                 <p>{data.date}</p>
                 <span className='font-bold mr-2'>[{data.username}]</span>
-              </>
+              </div>
             ) : (
               ''
             )}

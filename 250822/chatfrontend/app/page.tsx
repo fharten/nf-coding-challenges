@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 interface ChatData {
   username?: string;
   room?: string;
+  date?: string;
   message: string;
   system?: boolean;
 }
@@ -149,7 +150,10 @@ const WebSocketDemo: React.FC = () => {
             }
           >
             {data.username ? (
-              <span className='font-bold mr-2'>[{data.username}]</span>
+              <>
+                <p>{data.date}</p>
+                <span className='font-bold mr-2'>[{data.username}]</span>
+              </>
             ) : (
               ''
             )}

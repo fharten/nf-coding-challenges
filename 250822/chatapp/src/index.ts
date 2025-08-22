@@ -9,6 +9,7 @@ const server = http.createServer(app);
 interface WSClient extends WebSocket {
   room?: string;
   username?: string;
+  date?: string;
 }
 
 // Attach WebSocket server on custom path
@@ -67,12 +68,20 @@ wss.on('connection', (ws: WSClient) => {
 
         // Broadcast to all clients in the same room
         wss.clients.forEach((client: WSClient) => {
+          const now = new Date();
           if (client.readyState === WebSocket.OPEN && client.room === ws.room) {
             client.send(
               JSON.stringify({
                 username: ws.username,
                 room: ws.room,
                 message: data.message,
+                date: `${
+                  now.getHours() < 10 ? `0${now.getHours()}` : now.getHours()
+                }:${
+                  now.getMinutes() < 10
+                    ? `0${now.getMinutes()}`
+                    : now.getMinutes()
+                }`,
               }),
             );
           }

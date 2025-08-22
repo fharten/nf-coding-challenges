@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import Link from 'next/link';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -26,7 +27,7 @@ export default function RootLayout({
   return (
     <>
       <header className='flex justify-center mt-5 mb-20'>
-        <Link href={'/'}>HOME</Link>
+        <Navbar />
       </header>
       <html lang='en'>
         <body
@@ -34,7 +35,7 @@ export default function RootLayout({
         >
           {children}
           <footer className='absolute bottom-10 w-full'>
-            <p className='text-center'>&copy; {new Date().getFullYear()}</p>
+            <Footer />
           </footer>
         </body>
       </html>

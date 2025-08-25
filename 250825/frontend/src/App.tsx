@@ -46,17 +46,29 @@ function App() {
       <h1 className='font-bold text-2xl mt-10 text-center'>
         CHAT WITH CHATGPT
       </h1>
-      <div className='my-10'>
+      <div className='my-10 max-w-4xl mx-auto '>
         {chatHistory.map((msg) => (
           <div key={msg.user_id} className='max-w-4xl mx-auto flex flex-col'>
-            <p className='bg-teal-300 rounded-md border max-w-1/2 py-1 px-2 my-3'>
-              {msg.user_message}
-            </p>
-            <p className='flex bg-indigo-300 rounded-md border max-w-1/2 py-1 px-2 self-end'>
-              {msg.ai_message}
-            </p>
+            <div className='flex flex-col bg-teal-300 rounded-md border max-w-1/2 py-1 px-2 my-3'>
+              <p>{msg.user_message}</p>
+              <p className='font-light text-sm text-gray-500 self-end'>
+                {msg.user_time}
+              </p>
+            </div>
+            <div className='flex flex-col bg-indigo-300 rounded-md border max-w-1/2 py-1 px-2 self-end'>
+              <p>{msg.ai_message}</p>
+              <p className='font-light text-sm text-gray-500 self-end'>
+                {msg.ai_time}
+              </p>
+            </div>
           </div>
         ))}
+        {loading && (
+          <div className='flex flex-col bg-teal-300 rounded-md border max-w-1/2 py-1 px-2 my-3'>
+            <p>{content}</p>
+            <p className='font-light text-sm text-gray-500 self-end'>now</p>
+          </div>
+        )}
       </div>
       <div className='my-20 flex flex-col max-w-2xl mx-auto'>
         {!loading ? (

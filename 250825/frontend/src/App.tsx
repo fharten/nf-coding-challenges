@@ -1,7 +1,7 @@
 import { useEffect, useState, type CSSProperties } from 'react';
 import { animateScroll as scroll } from 'react-scroll';
 import { SyncLoader } from 'react-spinners';
-import type { Conversation } from './types/Message';
+import type { Conversation } from './types/Conversation';
 
 function App() {
   const [chatHistory, setChatHistory] = useState<Conversation[]>([]);
